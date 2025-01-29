@@ -1,0 +1,23 @@
+{
+  "access_token": "ya29.a0ARW5m775RRabr3LLguWpBJw9ecus3yeAZFCK2kB3dJeWWdIpSYx2-eewNCD2p3y5X6KQcUQEZHivPtkYdYXwv0tW2dRBybAW926yegfhywh8jOSfAoCLsMR0gRYYvZNLjlNpgEzD1QVk8THl2hUX-AeTfl7S4PZt6xYs_JnTSwaCgYKAY0SARASFQHGX2Mi8TOkFHZr42gYzzUDltgOCQ0177",
+  "client_id": "570690197730-42usj9jt6e1b6khj7uis91c4s8v0bagq.apps.googleusercontent.com",
+  "client_secret": "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",
+  "refresh_token": "1//04Uo-KK4QgW7BCgYIARAAGAQSNwF-L9IrttzHOMA7ducExS3nr6b2r_AvfLHp20A-4Ya6FM9t5uOwYNp0EZRkPSTkFob-U5l7a4E",
+  "token_expiry": "2025-01-08T02:07:05Z",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "user_agent": null,
+  "revoke_uri": "https://oauth2.googleapis.com/revoke",
+  "id_token": null,
+  "id_token_jwt": null,
+  "token_response": {
+    "access_token": "ya29.a0ARW5m775RRabr3LLguWpBJw9ecus3yeAZFCK2kB3dJeWWdIpSYx2-eewNCD2p3y5X6KQcUQEZHivPtkYdYXwv0tW2dRBybAW926yegfhywh8jOSfAoCLsMR0gRYYvZNLjlNpgEzD1QVk8THl2hUX-AeTfl7S4PZt6xYs_JnTSwaCgYKAY0SARASFQHGX2Mi8TOkFHZr42gYzzUDltgOCQ0177",
+    "expires_in": 3599,
+    "scope": "https://www.googleapis.com/auth/drive",
+    "token_type": "Bearer"
+  },
+  "scopes": ["https://www.googleapis.com/auth/drive"],
+  "token_info_uri": "https://oauth2.googleapis.com/tokeninfo",
+  "invalid": false,
+  "_class": "OAuth2Credentials",
+  "_module": "oauth2client.client"
+}
