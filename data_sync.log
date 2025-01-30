@@ -1,0 +1,40 @@
+2025-01-29 21:16:03,035 - ERROR - An unexpected error occurred: Cannot save file into a non-existent directory: 'data'
+2025-01-29 21:19:21,618 - ERROR - An unexpected error occurred: Cannot save file into a non-existent directory: 'data'
+2025-01-29 21:21:04,574 - ERROR - An unexpected error occurred: Cannot save file into a non-existent directory: 'data'
+2025-01-29 21:21:35,139 - ERROR - An unexpected error occurred: Cannot save file into a non-existent directory: 'data'
+2025-01-29 21:22:57,920 - ERROR - An unexpected error occurred: Cannot save file into a non-existent directory: 'data'
+2025-01-29 21:23:00,359 - ERROR - An unexpected error occurred: Cannot save file into a non-existent directory: 'data'
+2025-01-29 21:24:27,721 - ERROR - An unexpected error occurred: Cannot save file into a non-existent directory: 'data'
+2025-01-29 21:27:41,356 - INFO - Local copy saved at ./data/survey_feedback20250129_212741.xlsx
+2025-01-29 21:27:41,357 - ERROR - Error updating Google Excel file: Invalid client secrets file ('Error opening file', './getdata/client_secrets.json', 'No such file or directory', 2)
+2025-01-29 21:27:48,212 - INFO - Data saved to ./data/20250129_212748.xlsx
+2025-01-29 21:27:48,213 - ERROR - An unexpected error occurred: Invalid client secrets file ('Error opening file', './getdata/client_secrets.json', 'No such file or directory', 2)
+2025-01-29 21:28:00,795 - INFO - Data saved to ./data/20250129_212800.xlsx
+2025-01-29 21:28:00,795 - ERROR - An unexpected error occurred: Invalid client secrets file ('Error opening file', './getdata/client_secrets.json', 'No such file or directory', 2)
+2025-01-29 21:33:33,282 - INFO - Data saved to ./data/20250129_213333.xlsx
+2025-01-29 21:33:33,284 - ERROR - An unexpected error occurred: Invalid client secrets file ('Error opening file', './getdata/client_secrets.json', 'No such file or directory', 2)
+2025-01-29 21:35:01,991 - INFO - Data saved to ./data/20250129_213501.xlsx
+2025-01-29 21:35:01,991 - ERROR - An unexpected error occurred: Invalid client secrets file ('Error opening file', './getdata/client_secrets.json', 'No such file or directory', 2)
+2025-01-29 21:36:07,335 - INFO - Data saved to ./data/20250129_213607.xlsx
+2025-01-29 21:36:07,335 - ERROR - An unexpected error occurred: Invalid client secrets file ('Error opening file', './getdata/cockroachdb/client_secrets.json', 'No such file or directory', 2)
+2025-01-29 21:36:16,910 - INFO - Data saved to ./data/20250129_213616.xlsx
+2025-01-29 21:36:16,911 - ERROR - An unexpected error occurred: Invalid client secrets file ('Error opening file', './getdata/cockroachdb/client_secrets.json', 'No such file or directory', 2)
+2025-01-29 21:38:11,261 - INFO - Data saved to ./data/20250129_213811.xlsx
+2025-01-29 21:38:17,456 - INFO - Successfully retrieved access token
+2025-01-29 21:38:17,467 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-01-29 21:38:17,470 - ERROR - An unexpected error occurred: Credentials file cannot be symbolic link
+2025-01-29 21:38:25,292 - INFO - Data saved to ./data/20250129_213824.xlsx
+2025-01-29 21:38:43,316 - INFO - Successfully retrieved access token
+2025-01-29 21:38:43,326 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-01-29 21:38:43,328 - ERROR - An unexpected error occurred: Credentials file cannot be symbolic link
+2025-01-29 21:39:40,422 - INFO - Data saved to ./data/20250129_213940.xlsx
+2025-01-29 21:39:45,369 - INFO - Successfully retrieved access token
+2025-01-29 21:39:45,374 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-01-29 21:39:45,376 - ERROR - An unexpected error occurred: Credentials file cannot be symbolic link
+2025-01-29 21:40:38,014 - INFO - Data saved to ./data/20250129_214037.xlsx
+2025-01-29 21:40:38,015 - INFO - access_token is expired. Now: 2025-01-30 02:40:38.015503, token_expiry: 2025-01-08 02:07:05
+2025-01-29 21:40:38,015 - INFO - access_token is expired. Now: 2025-01-30 02:40:38.015503, token_expiry: 2025-01-08 02:07:05
+2025-01-29 21:40:38,016 - INFO - Refreshing access_token
+2025-01-29 21:40:38,442 - INFO - file_cache is only supported with oauth2client<4.0.0
+2025-01-29 21:41:34,712 - INFO - Data saved to ./data/20250129_214134.xlsx
+2025-01-29 21:41:34,729 - INFO - file_cache is only supported with oauth2client<4.0.0

@@ -32,6 +32,14 @@ def preprocess_data():
 
         # Step 4: Close the database connection
         #conn.close()
+        # Step 4.1: Remove specific user IDs from the DataFrame
+        user_ids_to_remove = [
+             "IAU000001", "IAU000002", "IAU000003", "IAU000008", 
+             "IAU000009", "IAU000010", "IAU000011", "IAU000013", 
+             "IAU000014", "IAU000016"
+         ]
+
+        df = df[~df['user_id'].isin(user_ids_to_remove)]
 
         # Step 5: Convert 'created_at' and 'updated_at' columns to datetime and split into date and time
         df['created_at'] = pd.to_datetime(df['created_at'])
@@ -81,7 +89,7 @@ def preprocess_data():
         df['timesave_min'] = df['q4_answer'].apply(calculate_timesave)
 
         # Generate filename with current date and time
-        filename = datetime.now().strftime(r"./data/survey_feedback%Y%m%d_%H%M%S.xlsx")
+        filename = datetime.now().strftime(r"./data/%Y%m%d_%H%M%S.xlsx")
 
         # Use openpyxl to save the Excel file
         with pd.ExcelWriter(filename, engine='openpyxl') as writer:
@@ -90,9 +98,18 @@ def preprocess_data():
         logging.info(f"Data saved to {filename}")
 
         # Authenticate and create the PyDrive client
-        client_secrets_path = os.path.join("./getdata/client_secrets.json")
-        creds_path = os.path.join("./getdata/mycreds.txt")
+        client_secrets_path = os.path.join(os.path.dirname(__file__), "client_secrets.json")
 
+        if not os.path.exists(client_secrets_path):
+            raise FileNotFoundError(f"Cannot access {client_secrets_path}: No such file or directory")
+
+        # Use an absolute path or ensure the relative path is correct
+        creds_path = os.path.join(os.path.dirname(__file__), "mycreds.json")
+
+        if not os.path.exists(creds_path):
+            raise FileNotFoundError(f"Cannot access {creds_path}: No such file or directory")
+
+            
         gauth = GoogleAuth()
 
         gauth.LoadCredentialsFile(creds_path)
@@ -105,8 +122,12 @@ def preprocess_data():
             gauth.Authorize()
 
         drive = GoogleDrive(gauth)
+        print("Authentication successful!")
 
-        logging.info("Authentication successful!")
+        # Initialize the Google Drive object
+        drive = GoogleDrive(gauth)
+
+        print("Authentication successful!")
 
         # Create a Google Drive file instance and set its content from the CSV file
         gfile = drive.CreateFile({
@@ -116,7 +137,7 @@ def preprocess_data():
         gfile.SetContentFile(filename)  # Set the file content
         gfile.Upload()  # Upload the file
 
-        logging.info(f"Data uploaded to Google Drive as {gfile['title']}")
+        print(f"Data uploaded to Google Drive as {gfile['title']}")
 
         # Step 1: Search for the 'inuse.xlsx' file in the specified folder
         file_list = drive.ListFile({'q': f"'{folder_id}' in parents and trashed=false"}).GetList()
@@ -128,20 +149,19 @@ def preprocess_data():
 
         # Step 2: Update or Upload the file
         if inuse_file:
-            logging.info(f"Found existing file: {inuse_file['title']} (ID: {inuse_file['id']}). Updating...")
+            print(f"Found existing file: {inuse_file['title']} (ID: {inuse_file['id']}). Updating...")
             inuse_file.SetContentFile(filename)  # Replace content with the local file
             inuse_file.Upload()  # Overwrite the file
-            logging.info(f"File {inuse_file['title']} updated successfully.")
+            print(f"File {inuse_file['title']} updated successfully.")
         else:
-            logging.info(f"File '{inuse_name}' not found in the folder. Creating a new file...")
+            print(f"File '{inuse_name}' not found in the folder. Creating a new file...")
             new_file = drive.CreateFile({
                 'title': inuse_name,
                 'parents': [{'id': folder_id}]
             })
             new_file.SetContentFile(filename)
             new_file.Upload()
-            logging.info(f"File {new_file['title']} uploaded successfully.")
-
+            print(f"File {new_file['title']} uploaded successfully.")
     except Exception as e:
         logging.error(f"An unexpected error occurred: {str(e)}")
 
