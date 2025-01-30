@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
-from cockroachdb.config import db_params  # Import the db_params from config.py
+from config import db_params  # Import the db_params from config.py
 import os
 import logging
 
@@ -17,27 +17,21 @@ logging.basicConfig(
 folder_id = "15gmgsovtXeQkWwMkAi5HU6jdwFvnzBGQ"
 inuse_name = "inuse"
 
-def sync_data():
+def preprocess_data():
     try:
         # Step 1: Connect to the database
         conn = psycopg2.connect(**db_params)
+        print(conn)
 
         # Step 2: Query to fetch data from the user_feedback table
         query = 'SELECT * FROM public."user_feedback"'
 
         # Step 3: Fetch data into a pandas DataFrame
         df = pd.read_sql_query(query, conn)
+        print(df)
 
         # Step 4: Close the database connection
-        conn.close()
-
-        # Step 4.1: Remove specific user IDs from the DataFrame
-        user_ids_to_remove = [
-             "IAU000001", "IAU000002", "IAU000003", "IAU000008", 
-             "IAU000009", "IAU000010", "IAU000011", "IAU000013", 
-             "IAU000014", "IAU000016"
-         ]
-        df = df[~df['user_id'].isin(user_ids_to_remove)]
+        #conn.close()
 
         # Step 5: Convert 'created_at' and 'updated_at' columns to datetime and split into date and time
         df['created_at'] = pd.to_datetime(df['created_at'])
@@ -87,7 +81,7 @@ def sync_data():
         df['timesave_min'] = df['q4_answer'].apply(calculate_timesave)
 
         # Generate filename with current date and time
-        filename = datetime.now().strftime(r"./data/%Y%m%d_%H%M%S.xlsx")
+        filename = datetime.now().strftime(r"./data/survey_feedback%Y%m%d_%H%M%S.xlsx")
 
         # Use openpyxl to save the Excel file
         with pd.ExcelWriter(filename, engine='openpyxl') as writer:
@@ -152,9 +146,4 @@ def sync_data():
         logging.error(f"An unexpected error occurred: {str(e)}")
 
 if __name__ == "__main__":
-    sync_data()
-
-# Cron job setup instructions:
-# 1. Open crontab: crontab -e
-# 2. Add the following line to schedule the script every 5 minutes:
-# */5 * * * * /usr/bin/python3 /path/to/your_script.py
+    preprocess_data()
